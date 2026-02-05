@@ -1,13 +1,11 @@
+/* src/App.css */
 /* Wings-style modern UI (navy base, red accents, clean glass cards) */
 
 :root {
   --wings-navy: #003a64;
   --wings-red: #cf0b35;
-  --wings-orange: #ef7724;
 
   --bg: #07111b;
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.72);
 
   --card: rgba(255, 255, 255, 0.13);
   --card-strong: rgba(255, 255, 255, 0.08);
@@ -17,6 +15,12 @@
 
   /* ✅ Used for non-desktop (flex) layouts */
   --card-width: 295px;
+
+  /* ✅ (kept) variable, no longer used for nav spacing now */
+  --hero-nav-bottom-gap: 10px;
+
+  /* ✅ (kept) variable, no longer needed but harmless */
+  --hero-nav-safe-space: 10px;
 }
 
 /* ✅ Visually hidden helper (keeps SEO/accessibility) */
@@ -45,8 +49,8 @@
 /* HERO */
 .hero {
   position: relative;
-  padding: 56px 20px 28px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  padding: 56px 20px 10px;
+  border-bottom: 1px solid #e4003d9f;
   overflow: hidden;
 
   background:
@@ -76,71 +80,47 @@
   max-width: 1400px;
   margin: 0 auto;
 
-  /* ✅ center all hero content */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-/* ✅ header nav row */
-.heroNav {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 14px;
-}
-
-.heroNavSide {
-  display: flex;
-  align-items: center;
-  min-width: 0;
-}
-
-.heroNavSide--left {
-  justify-content: flex-start;
-}
-
-.heroNavSide--right {
-  justify-content: flex-end;
-}
-
-/* ✅ Header buttons */
+/* ✅ Header button (re-used for CTA under cards) */
 .heroBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  font-size: clamp(12px, 1.2vw, 16px);
-  padding: clamp(8px, 1.1vw, 14px) clamp(12px, 2.2vw, 26px);
+  font-size: clamp(12px, 1.2vw, 17px);
+  padding: clamp(12px, 1.1vw, 18px) clamp(12px, 2.2vw, 80px);
   border-radius: 999px;
 
   text-decoration: none;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
 
   color: rgba(255, 255, 255, 0.92);
-  background: rgba(0, 19, 113, 0.30);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #01376679;
+  border: 1px solid rgba(255, 255, 255, 0.595);
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
   backdrop-filter: blur(10px);
 
   white-space: nowrap;
   max-width: 100%;
+  margin-top: 25px;
+  margin-bottom: -15px;
 }
 
 .heroBtn:hover {
   transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.10);
+  background: #013766c8;
   border-color: rgba(255, 255, 255, 0.26);
 }
 
 .heroBtn:focus-visible {
   outline: none;
-  box-shadow:
-    0 0 0 3px rgba(207, 11, 53, 0.55),
-    var(--shadow);
+  box-shadow: 0 0 0 3px rgba(207, 11, 53, 0.55), var(--shadow);
 }
 
 .heroBtn--primary {
@@ -153,47 +133,50 @@
   border-color: rgba(207, 11, 53, 0.60);
 }
 
-.brandRow {
+/* ✅ STACKED HERO HEADER */
+.brandStack {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
+  gap: 8px;
   width: 100%;
 }
 
-.brand {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  text-decoration: none;
+.heroAtText {
+  font-weight: 900;
+  letter-spacing: 0.10em;
+  text-transform: lowercase;
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
 }
 
+/* ✅ Hockey image */
+.heroTitleImg {
+  display: block;
+  width: min(255px, 92vw);
+  height: auto;
+  user-select: none;
+  margin-top: -35px;
+  margin-bottom: 5px;
+}
+
+/* ✅ Wings logo */
 .logo {
-  height: 74px;
+  height: 80px;
   width: auto;
   display: block;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
-  margin-bottom: -5px;
-  margin-top: -25px;
-}
-
-/* ✅ image-based hero title */
-.heroTitleImg {
-  display: block;
-  width: min(220px, 92vw);
-  height: auto;
-  user-select: none;
-  margin-top: 20px;
-  margin-bottom: 8px;
+  margin-top: 5px;
 }
 
 .heroSubtitle {
-  margin: 0;
+  margin: 10px 0 0;
   max-width: 70ch;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.9;
   color: rgba(255, 255, 255, 0.78);
   text-align: center;
 }
@@ -228,6 +211,15 @@
   }
 }
 
+/* ✅ NEW: CTA row under cards */
+.ctaRow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 26px;
+  padding-bottom: 10px;
+}
+
 /* CARDS */
 .card {
   display: flex;
@@ -242,9 +234,9 @@
   backdrop-filter: blur(10px);
 
   transition:
-    transform 150ms cubic-bezier(0.2, 0.9, 0.2, 1),
-    box-shadow 150ms cubic-bezier(0.2, 0.9, 0.2, 1),
-    border-color 150ms ease;
+    transform 950ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    box-shadow 950ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    border-color 950ms ease;
 
   outline: none;
   position: relative;
@@ -275,32 +267,27 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(600px 250px at 10% 0%,
-      rgba(0, 58, 100, 0.18),
-      transparent 60%);
+  background: radial-gradient(600px 250px at 10% 0%, rgba(0, 58, 100, 0.18), transparent 60%);
   opacity: 0.9;
   pointer-events: none;
   z-index: 0;
 }
 
 .cardMedia,
-.cardTop,
-.cardBottom {
+.cardTop {
   position: relative;
   z-index: 1;
 }
 
 .card:hover {
-  transform: translateY(-6px) scale(1.03);
+  transform: translateY(-6px) scale(1.01);
   border-color: rgba(207, 11, 53, 0.60);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
   z-index: 2;
 }
 
 .card:focus-visible {
-  box-shadow:
-    0 0 0 3px rgba(207, 11, 53, 0.55),
-    var(--shadow);
+  box-shadow: 0 0 0 3px rgba(207, 11, 53, 0.55), var(--shadow);
 }
 
 .cardMedia {
@@ -360,8 +347,8 @@
 }
 
 .cardTitle {
-  margin: 0;
-  font-size: 17px;
+  margin: 5px 0 0;
+  font-size: 19px;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: rgba(255, 255, 255, 0.96);
@@ -371,53 +358,20 @@
 }
 
 .cardDesc {
-  margin: 7px 0 0;
-  font-size: 13.5px;
-  line-height: 1.55;
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.35;
   color: rgba(255, 255, 255, 0.72);
   overflow-wrap: anywhere;
   text-align: center;
   width: 100%;
 }
 
-.cardBottom {
-  margin-top: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 0;
-}
-
-.cardLink {
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.92);
-  display: inline-flex;
-  gap: 10px;
-  align-items: center;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: rgba(207, 11, 53, 0.479);
-  border: 1px solid rgba(207, 11, 53, 0.25);
-  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
-}
-
-/* ✅ Lunchtime card (desktop default) */
-.cardLink--lower {
-  position: relative;
-  top: 20px;
-}
-
-/* ✅ Spring League card (desktop default) */
-.cardLink--springLower {
-  position: relative;
-  top: 30px;
-}
-
-.card:hover .cardLink {
-  background: rgba(207, 11, 53, 0.20);
-  border-color: rgba(207, 11, 53, 0.45);
-  transform: translateY(-3px);
+/* ✅ Reserved space for Wix buttons dropped into each card */
+.cardBtnSlot {
+  height: 34px;
+  margin-top: 18px;
+  width: 100%;
 }
 
 .footer {
@@ -428,33 +382,170 @@
   border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-/* ✅ MOBILE FIXES */
-@media (max-width: 520px) {
-  .logo {
-    height: 40px;
-    margin-top: 0;
-    margin-bottom: 0;
+/* ✅ Ultra-wide (2560px+): keep ONE row, prevent skinny cards + remove huge empty gap */
+@media (min-width: 2560px) {
+  .heroTitleImg {
+    width: 290px;
+    margin-bottom: 10px;
+    margin-top: -15px;
   }
 
+  .heroAtText {
+    font-size: 20px;
+    font-weight: 100;
+    margin-bottom: 7px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  }
+
+  .logo {
+    height: 104px;
+  }
+
+  .heroSubtitle {
+    font-size: 17px;
+    line-height: 1.55;
+    max-width: 78ch;
+    margin-bottom: 15px;
+    margin-top: 20px;
+  }
+
+  .heroBtn {
+    font-size: 16px;
+    padding: 16px 44px;
+  }
+
+  .content {
+    max-width: 2400px;
+    flex: 0 0 auto;
+    padding-bottom: 60px;
+    /* ✅ reduced since CTA is inside content now */
+  }
+
+  .grid {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 35px;
+    margin-left: -50px;
+  }
+
+  .card {
+    flex: 0 0 310px;
+    max-width: 310px;
+    min-width: 325px;
+    min-height: unset;
+    margin-top: 30px;
+    height: 540px;
+  }
+
+  .ctaRow {
+    padding-top: 124px;
+    padding-bottom: 0;
+  }
+
+  .heroBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: clamp(12px, 1.2vw, 24px);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 20px 70px;
+    /* ⬅️ change height (first) + width (second) */
+    border-radius: 999px;
+
+    text-decoration: none;
+    font-weight: 100;
+    letter-spacing: 0.06em;
+
+    color: rgba(255, 255, 255, 0.92);
+    background: #01376679;
+    border: 1px solid rgba(255, 255, 255, 0.595);
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    backdrop-filter: blur(10px);
+
+    white-space: nowrap;
+    max-width: 100%;
+    margin-top: -50px;
+  }
+
+  .heroBtn:hover {
+    transform: translateY(-1px);
+    background: #013766c8;
+    border-color: rgba(255, 255, 255, 0.26);
+  }
+
+  .heroBtn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(207, 11, 53, 0.55), var(--shadow);
+  }
+
+  .heroBtn--primary {
+    background: rgba(207, 11, 53, 0.22);
+    border-color: rgba(207, 11, 53, 0.42);
+  }
+
+  .heroBtn--primary:hover {
+    background: rgba(207, 11, 53, 0.30);
+    border-color: rgba(207, 11, 53, 0.60);
+  }
+}
+
+/* ✅ MOBILE FIXES */
+@media (max-width: 520px) {
   .hero {
     padding: 44px 16px 22px;
   }
 
+  /* ✅ Header button (re-used for CTA under cards) */
+  .heroBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    padding: 18px 60px;
+    border-radius: 999px;
+
+    text-decoration: none;
+    font-weight: 100;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 0.07em;
+
+    color: rgba(255, 255, 255, 0.92);
+    background: #01376679;
+    border: 1px solid rgba(255, 255, 255, 0.595);
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    backdrop-filter: blur(10px);
+
+    white-space: nowrap;
+    max-width: 100%;
+    margin-top: 15px;
+    margin-bottom: -15px;
+  }
+
+  .heroBtn:hover {
+    transform: translateY(-1px);
+    background: #013766c8;
+    border-color: rgba(255, 255, 255, 0.26);
+  }
+
+  .heroBtn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(207, 11, 53, 0.55), var(--shadow);
+  }
+
+  .heroBtn--primary {
+    background: rgba(207, 11, 53, 0.22);
+    border-color: rgba(207, 11, 53, 0.42);
+  }
+
+  .heroBtn--primary:hover {
+    background: rgba(207, 11, 53, 0.30);
+    border-color: rgba(207, 11, 53, 0.60);
+  }
+
   .content {
-    padding: 20px 12px 34px;
-  }
-
-  /* ✅ REMOVE the buttons on mobile only */
-  .heroNavSide--left,
-  .heroNavSide--right {
-    display: none;
-  }
-
-  /* ✅ keep the logo centered (no left/right columns needed) */
-  .heroNav {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    row-gap: 0;
+    padding: 26px 12px 34px;
   }
 
   .grid {
@@ -485,31 +576,40 @@
   }
 
   .cardTitle {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1;
   }
 
+  .cardDesc {
+    font-size: 14px;
+  }
+
   .heroTitleImg {
-    width: min(105px, 92vw);
-    margin-bottom: 10px;
-    margin-top: 15px;
+    width: min(180px, 92vw);
+    margin-top: -40px;
+  }
+
+  .heroAtText {
+    font-size: 13px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 100;
+    margin-top: -3px;
+  }
+
+  .logo {
+    height: 50px;
+    margin-top: 0px;
   }
 
   .heroSubtitle {
-    margin-bottom: -15px;
     max-width: 70ch;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.78);
     text-align: center;
   }
 
-  /* ✅ Move these two “View details” buttons UP on mobile */
-  .cardLink--lower {
-    top: 6px;  /* was 20px */
-  }
-
-  .cardLink--springLower {
-    top: 10px; /* was 30px */
+  .ctaRow {
+    padding-top: 22px;
   }
 }
