@@ -139,7 +139,7 @@ export default function App() {
           ))}
         </section>
 
-        {/* ✅ NEW: centered Ice Rentals button UNDER the cards */}
+        {/* ✅ centered Ice Rentals button UNDER the cards */}
         <div className="ctaRow" aria-label="Ice rentals">
           <a
             className="heroBtn heroBtn--primary"
