@@ -7,9 +7,6 @@ import logo from "./assets/wings-logo.png";
 // ✅ Hero image
 import heroImg from "./assets/hockey-hero.jpg";
 
-// ✅ Hero title image (Hockey)
-import heroTitleImg from "./assets/hockey-programs.png";
-
 // ✅ Card images (add these files to src/assets/cards/)
 import imgInhouse from "./assets/cards/inhouse.jpg";
 import imgLearnTo from "./assets/cards/learnto.png";
@@ -73,19 +70,15 @@ const CARDS = [
 ];
 
 function getCardCtaText(title) {
-  // Map exactly to what you requested (by the visible card title)
-  if (title === "In-House Spring League") return "Click for Info & Registration";
-  if (title === "Learn to Play") return "Click for Info & Registration";
-  if (title === "Lunchtime Adult Drop-In Hockey") return "Click for Info & RSVP";
-  if (title === "Private Lessons") return "Click for Info";
-  if (title === "Stick & Puck") return "Click for Info";
-  if (title === "Mites B/C Schedule") return "Click for Schedule";
-
-  // fallback (in case you add new cards later)
-  return "Click for Info";
+  if (title === "In-House Spring League") return "Info & Registration";
+  if (title === "Learn to Play") return "Info & Registration";
+  if (title === "Lunchtime Adult Drop-In Hockey") return "Info & RSVP";
+  if (title === "Private Lessons") return "Learn More";
+  if (title === "Stick & Puck") return "Learn More";
+  if (title === "Mites B/C Schedule") return "Schedule";
+  return "Learn More";
 }
 
-// ✅ Only these 3 cards should have the divider moved up
 function hasRaisedDivider(title) {
   return (
     title === "In-House Spring League" ||
@@ -99,13 +92,10 @@ function HockeyCard({ title, description, image, alt, pos, fit, scale }) {
   const imgScale = isContain ? 1 : typeof scale === "number" ? scale : 1;
 
   const raisedDivider = hasRaisedDivider(title);
+  const ctaText = getCardCtaText(title);
 
   return (
-    <div
-      className={`card ${raisedDivider ? "card--raiseDivider" : ""}`}
-      role="group"
-      aria-label={title}
-    >
+    <div className={`card ${raisedDivider ? "card--raiseDivider" : ""}`} role="group" aria-label={title}>
       <div className={`cardMedia ${isContain ? "cardMedia--contain" : ""}`}>
         <img
           className={`cardImg ${isContain ? "cardImg--contain" : ""}`}
@@ -126,10 +116,12 @@ function HockeyCard({ title, description, image, alt, pos, fit, scale }) {
         </div>
       </div>
 
-      {/* ✅ Divider + CTA helper text pinned to bottom */}
-      <div className="cardBtnSlot" aria-label={getCardCtaText(title)}>
+      <div className="cardBtnSlot" aria-label={ctaText}>
         <div className="cardDivider" aria-hidden="true" />
-        <span className="cardCtaText">{getCardCtaText(title)}</span>
+
+        <button type="button" className="cardCtaBtn" aria-label={ctaText} tabIndex={-1}>
+          <span className="cardCtaBtnText">{ctaText}</span>
+        </button>
       </div>
     </div>
   );
@@ -142,20 +134,11 @@ export default function App() {
         <div className="heroOverlay" />
 
         <div className="heroInner">
-          {/* ✅ STACKED HERO HEADER: Hockey / at / Wings Arena (all views) */}
-          <div className="brandStack" aria-label="Hockey at Wings Arena">
-            <img
-              className="heroTitleImg"
-              src={heroTitleImg}
-              alt="Hockey"
-              loading="eager"
-              draggable="false"
-            />
-            <span className="heroAtText">at</span>
+          <div className="brandStack" aria-label="Wings Arena Hockey Programs">
             <img className="logo" src={logo} alt="Wings Arena" />
           </div>
 
-          <h1 className="srOnly">Hockey at Wings Arena</h1>
+          <h1 className="srOnly">Wings Arena Hockey Programs</h1>
 
           <p className="heroSubtitle">
             Find leagues, development, drop-ins, lessons, and sessions — all in one place.
@@ -170,7 +153,6 @@ export default function App() {
           ))}
         </section>
 
-        {/* ✅ centered Ice Rentals button UNDER the cards */}
         <div className="ctaRow" aria-label="Ice rentals">
           <a
             className="heroBtn heroBtn--primary"
