@@ -23,6 +23,7 @@ const CARDS = [
     image: imgInhouse,
     alt: "In-House Spring League",
     pos: "50% 35%",
+    href: "https://www.wingsarena.com/inhouse-spring-league",
   },
   {
     title: "Learn to Play",
@@ -30,6 +31,7 @@ const CARDS = [
     image: imgLearnTo,
     alt: "Learn to Play & Skate",
     pos: "70% 40%",
+    href: "https://www.wingsarena.com/learnto",
   },
   {
     title: "Lunchtime Adult Drop-In Hockey",
@@ -37,6 +39,7 @@ const CARDS = [
     image: imgLunchtime,
     alt: "Lunchtime Adult Drop-In Hockey",
     pos: "50% 0%",
+    href: "https://www.wingsarena.com/lunchtime-hockey",
   },
   {
     title: "Wings Arena Adult Hockey League",
@@ -45,6 +48,7 @@ const CARDS = [
     alt: "Adult Hockey League",
     fit: "cover",
     scale: 1,
+    href: "https://www.wingsarena.com/adulthockey",
   },
   {
     title: "Private Lessons",
@@ -52,6 +56,7 @@ const CARDS = [
     image: imgPrivateLessons,
     alt: "Private Lessons",
     pos: "50% 30%",
+    href: "https://www.wingsarena.com/private-lessons",
   },
   {
     title: "Stick & Puck",
@@ -59,6 +64,7 @@ const CARDS = [
     image: imgStickPuck,
     alt: "Stick & Puck",
     pos: "50% 45%",
+    href: "https://www.wingsarena.com/stickandpuck",
   },
   {
     title: "Mites B/C Schedule",
@@ -66,6 +72,7 @@ const CARDS = [
     image: imgMites,
     alt: "Mites B/C Schedule",
     pos: "50% 35%",
+    href: "https://www.wingsarena.com/mites-bcschedule",
   },
 ];
 
@@ -76,6 +83,7 @@ function getCardCtaText(title) {
   if (title === "Private Lessons") return "Learn More";
   if (title === "Stick & Puck") return "Learn More";
   if (title === "Mites B/C Schedule") return "Schedule";
+  if (title === "Wings Arena Adult Hockey League") return "Learn More";
   return "Learn More";
 }
 
@@ -87,7 +95,7 @@ function hasRaisedDivider(title) {
   );
 }
 
-function HockeyCard({ title, description, image, alt, pos, fit, scale }) {
+function HockeyCard({ title, description, image, alt, pos, fit, scale, href }) {
   const isContain = fit === "contain";
   const imgScale = isContain ? 1 : typeof scale === "number" ? scale : 1;
 
@@ -95,7 +103,11 @@ function HockeyCard({ title, description, image, alt, pos, fit, scale }) {
   const ctaText = getCardCtaText(title);
 
   return (
-    <div className={`card ${raisedDivider ? "card--raiseDivider" : ""}`} role="group" aria-label={title}>
+    <div
+      className={`card ${raisedDivider ? "card--raiseDivider" : ""}`}
+      role="group"
+      aria-label={title}
+    >
       <div className={`cardMedia ${isContain ? "cardMedia--contain" : ""}`}>
         <img
           className={`cardImg ${isContain ? "cardImg--contain" : ""}`}
@@ -119,9 +131,16 @@ function HockeyCard({ title, description, image, alt, pos, fit, scale }) {
       <div className="cardBtnSlot" aria-label={ctaText}>
         <div className="cardDivider" aria-hidden="true" />
 
-        <button type="button" className="cardCtaBtn" aria-label={ctaText} tabIndex={-1}>
+        {/* ✅ Option A: real link that navigates the TOP window (avoids loading inside the iframe) */}
+        <a
+          className="cardCtaBtn"
+          href={href}
+          target="_top"
+          rel="noreferrer"
+          aria-label={ctaText}
+        >
           <span className="cardCtaBtnText">{ctaText}</span>
-        </button>
+        </a>
       </div>
     </div>
   );
