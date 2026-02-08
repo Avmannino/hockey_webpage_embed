@@ -31,7 +31,7 @@ const CARDS = [
     image: imgLearnTo,
     alt: "Learn to Play & Skate",
     pos: "70% 40%",
-    href: "https://www.wingsarena.com/learnto",
+    href: "https://www.wingsarena.com/learntoplay",
   },
   {
     title: "Lunchtime Adult Drop-In Hockey",
