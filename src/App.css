@@ -194,11 +194,12 @@ body {
 }
 
 /* ✅ Default layout: flex wrap */
+/* ✅ UPDATED: increased horizontal gap for desktop views */
 .grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px 55px;
+  gap: 20px 72px; /* row-gap | column-gap */
   align-items: stretch;
 }
 
@@ -215,7 +216,11 @@ body {
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
 
-  transition: none;
+  /* ✅ card hover animation base */
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 200ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  will-change: transform;
 
   outline: none;
   position: relative;
@@ -224,15 +229,35 @@ body {
 
   flex: 0 0 var(--card-width);
   max-width: var(--card-width);
-
-  transform: none;
-  transform-origin: center;
-  will-change: auto;
+  z-index: 0;
 }
 
+/* ✅ Hover grows the whole card (desktop pointer only) */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: scale(1.02);
+    z-index: 5; /* keeps the scaled card above neighbors */
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+  }
+
+  .card:active {
+    transform: scale(1.02);
+  }
+}
+
+/* ✅ Keyboard users get the same effect when tabbing into the card */
+.card:focus-within {
+  transform: scale(1.03);
+  z-index: 5;
+  border-color: rgba(207, 11, 53, 0.35);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+}
+
+/* ✅ Desktop: keep larger horizontal spacing */
 @media (min-width: 1000px) {
   .grid {
-    gap: 20px 40px;
+    gap: 20px 76px; /* row-gap | column-gap (bigger than before) */
   }
 
   .card {
@@ -243,7 +268,7 @@ body {
 
 @media (min-width: 1400px) {
   .grid {
-    gap: 30px 30px;
+    gap: 30px 82px; /* row-gap | column-gap (bigger than before) */
   }
 
   .card {
@@ -483,9 +508,16 @@ body {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+  .card,
   .cardCtaBtn,
   .cardCtaBtn::before {
     transition: none !important;
+  }
+
+  .card:hover,
+  .card:active,
+  .card:focus-within {
+    transform: none !important;
   }
 }
 
@@ -524,13 +556,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 35px;
+    gap: 35px 90px; /* ✅ bigger horizontal gap on ultra-wide */
     width: 100%;
     margin: 0 auto;
   }
 
+  /* ✅ UPDATED: keep the 4-up max width math aligned to the NEW column gap */
   .grid {
-    max-width: calc((var(--card-width) * 4) + (35px * 3));
+    max-width: calc((var(--card-width) * 4) + (90px * 3));
   }
 
   .card {
