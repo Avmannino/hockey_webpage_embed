@@ -561,7 +561,6 @@ body {
     margin: 0 auto;
   }
 
-  /* ✅ UPDATED: keep the 4-up max width math aligned to the NEW column gap */
   .grid {
     max-width: calc((var(--card-width) * 4) + (90px * 3));
   }
@@ -580,17 +579,14 @@ body {
     margin-top: 7px;
   }
 
-  /* ✅ Default divider position for 2560 stays (Adult League uses this) */
   .cardDivider {
     margin: 0px auto 16px;
   }
 
-  /* ✅ Move dividers UP on every card except the 4th card (Adult League) */
   .grid > .card:not(:nth-child(4)) .cardDivider {
-    margin-bottom: 26px; /* <-- raises divider position */
+    margin-bottom: 26px;
   }
 
-  /* ✅ Keep your special "raiseDivider" behavior, but also raise it in 2560 view */
   .grid > .card.card--raiseDivider:not(:nth-child(4)) .cardDivider {
     margin-top: -34px;
   }

@@ -14,7 +14,6 @@ import imgLunchtime from "./assets/cards/lunchtime.png";
 import imgAdultLeague from "./assets/cards/adultleague.png";
 import imgPrivateLessons from "./assets/cards/privatelessons.jpg";
 import imgStickPuck from "./assets/cards/stickpuck.jpg";
-import imgMites from "./assets/cards/mites.jpg";
 
 const CARDS = [
   {
@@ -66,14 +65,6 @@ const CARDS = [
     pos: "50% 45%",
     href: "https://www.wingsarena.com/stickandpuck",
   },
-  {
-    title: "Mites B/C Schedule",
-    description: "Quick access to the latest schedule and updates.",
-    image: imgMites,
-    alt: "Mites B/C Schedule",
-    pos: "50% 35%",
-    href: "https://www.wingsarena.com/mites-bcschedule",
-  },
 ];
 
 function getCardCtaText(title) {
@@ -82,7 +73,6 @@ function getCardCtaText(title) {
   if (title === "Lunchtime Adult Drop-In Hockey") return "Info & RSVP";
   if (title === "Private Lessons") return "Learn More";
   if (title === "Stick & Puck") return "Learn More";
-  if (title === "Mites B/C Schedule") return "Schedule";
   if (title === "Wings Arena Adult Hockey League") return "Learn More";
   return "Learn More";
 }
@@ -131,7 +121,6 @@ function HockeyCard({ title, description, image, alt, pos, fit, scale, href }) {
       <div className="cardBtnSlot" aria-label={ctaText}>
         <div className="cardDivider" aria-hidden="true" />
 
-        {/* ✅ Option A: real link that navigates the TOP window (avoids loading inside the iframe) */}
         <a
           className="cardCtaBtn"
           href={href}
