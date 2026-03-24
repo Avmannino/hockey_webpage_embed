@@ -70,7 +70,7 @@ const CARDS = [
 function getCardCtaText(title) {
   if (title === "In-House Spring League") return "Info & Registration";
   if (title === "Learn to Play") return "Info & Registration";
-  if (title === "Lunchtime Adult Drop-In Hockey") return "Info & RSVP";
+  if (title === "Adult Drop-In Hockey") return "Info & RSVP";
   if (title === "Private Lessons") return "Learn More";
   if (title === "Stick & Puck") return "Learn More";
   if (title === "Wings Arena Adult Hockey League") return "Learn More";
@@ -81,7 +81,7 @@ function hasRaisedDivider(title) {
   return (
     title === "In-House Spring League" ||
     title === "Learn to Play" ||
-    title === "Lunchtime Adult Drop-In Hockey"
+    title === "Adult Drop-In Hockey"
   );
 }
 
