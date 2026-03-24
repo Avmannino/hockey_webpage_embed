@@ -10,7 +10,7 @@ import heroImg from "./assets/hockey-hero.jpg";
 // ✅ Card images (add these files to src/assets/cards/)
 import imgInhouse from "./assets/cards/inhouse.jpg";
 import imgLearnTo from "./assets/cards/learnto.png";
-import imgLunchtime from "./assets/cards/lunchtime.png";
+import imgadultdropin from "./assets/cards/adultdropin.png";
 import imgAdultLeague from "./assets/cards/adultleague.png";
 import imgPrivateLessons from "./assets/cards/privatelessons.jpg";
 import imgStickPuck from "./assets/cards/stickpuck.jpg";
@@ -33,12 +33,12 @@ const CARDS = [
     href: "https://www.wingsarena.com/learntoplay",
   },
   {
-    title: "Lunchtime Adult Drop-In Hockey",
+    title: "Adult Drop-In Hockey",
     description: "Midday skate—fast, fun, and easy to join.",
-    image: imgLunchtime,
-    alt: "Lunchtime Adult Drop-In Hockey",
+    image: imgadultdropin,
+    alt: "Adult Drop-In Hockey",
     pos: "50% 0%",
-    href: "https://www.wingsarena.com/lunchtime-hockey",
+    href: "https://www.wingsarena.com/adult-dropin-hockey",
   },
   {
     title: "Wings Arena Adult Hockey League",
