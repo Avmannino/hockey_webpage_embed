@@ -17,12 +17,12 @@ import imgStickPuck from "./assets/cards/stickpuck.jpg";
 
 const CARDS = [
   {
-    title: "In-House Spring League",
+    title: "In-House Summer League",
     description: "Season details, divisions, rules, and registration.",
     image: imgInhouse,
-    alt: "In-House Spring League",
+    alt: "In-House Summer League",
     pos: "50% 35%",
-    href: "https://www.wingsarena.com/inhouse-spring-league",
+    href: "https://www.wingsarena.com/inhouse-summer-league",
   },
   {
     title: "Learn to Play",
@@ -68,7 +68,7 @@ const CARDS = [
 ];
 
 function getCardCtaText(title) {
-  if (title === "In-House Spring League") return "Info & Registration";
+  if (title === "In-House Summer League") return "Info & Registration";
   if (title === "Learn to Play") return "Info & Registration";
   if (title === "Adult Drop-In Hockey") return "Info & RSVP";
   if (title === "Private Lessons") return "Learn More";
@@ -79,7 +79,7 @@ function getCardCtaText(title) {
 
 function hasRaisedDivider(title) {
   return (
-    title === "In-House Spring League" ||
+    title === "In-House Summer League" ||
     title === "Learn to Play" ||
     title === "Adult Drop-In Hockey"
   );
