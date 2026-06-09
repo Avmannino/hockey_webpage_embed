@@ -33,12 +33,12 @@ const CARDS = [
     href: "https://www.wingsarena.com/learntoplay",
   },
   {
-    title: "Adult Drop-In Hockey",
-    description: "Midday skate—fast, fun, and easy to join.",
+    title: "Open Hockey",
+    description: "Casual Scrimmages, fun, and easy to meet new players.",
     image: imgadultdropin,
     alt: "Adult Drop-In Hockey",
     pos: "50% 0%",
-    href: "https://www.wingsarena.com/adult-dropin-hockey",
+    href: "https://www.wingsarena.com/open-hockey",
   },
   {
     title: "Wings Arena Adult Hockey League",
