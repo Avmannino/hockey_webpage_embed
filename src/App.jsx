@@ -36,7 +36,7 @@ const CARDS = [
     title: "Open Hockey",
     description: "Casual Scrimmages, fun, and easy to meet new players.",
     image: imgadultdropin,
-    alt: "Adult Drop-In Hockey",
+    alt: "Open Hockey",
     pos: "50% 0%",
     href: "https://www.wingsarena.com/open-hockey",
   },
@@ -70,7 +70,7 @@ const CARDS = [
 function getCardCtaText(title) {
   if (title === "In-House Summer League") return "Info & Registration";
   if (title === "Learn to Play") return "Info & Registration";
-  if (title === "Adult Drop-In Hockey") return "Info & RSVP";
+  if (title === "Open Hockey") return "Info & RSVP";
   if (title === "Private Lessons") return "Learn More";
   if (title === "Stick & Puck") return "Learn More";
   if (title === "Wings Arena Adult Hockey League") return "Learn More";
@@ -81,7 +81,7 @@ function hasRaisedDivider(title) {
   return (
     title === "In-House Summer League" ||
     title === "Learn to Play" ||
-    title === "Adult Drop-In Hockey"
+    title === "Open Hockey"
   );
 }
 
