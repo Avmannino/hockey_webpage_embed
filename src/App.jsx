@@ -17,7 +17,7 @@ import imgStickPuck from "./assets/cards/stickpuck.jpg";
 
 const CARDS = [
   {
-    title: "In-House Summer League",
+    title: "Mites LTP League",
     description: "Season details, divisions, rules, and registration.",
     image: imgInhouse,
     alt: "In-House Summer League",
