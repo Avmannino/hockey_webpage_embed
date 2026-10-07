@@ -17,12 +17,12 @@ import imgStickPuck from "./assets/cards/stickpuck.jpg";
 
 const CARDS = [
   {
-    title: "Mites LTP League",
-    description: "Season details, divisions, rules, and registration.",
+    title: "Mites B & C Schedules",
+    description: "Game dates, times, matchups and parking info.",
     image: imgInhouse,
-    alt: "In-House Summer League",
+    alt: "Mites B & C Schedules",
     pos: "50% 35%",
-    href: "https://www.wingsarena.com/inhouse-summer-league",
+    href: "https://www.wingsarena.com/mites-bcschedule",
   },
   {
     title: "Learn to Play",
@@ -33,12 +33,12 @@ const CARDS = [
     href: "https://www.wingsarena.com/learntoplay",
   },
   {
-    title: "Open Hockey",
-    description: "Casual Scrimmages, fun, and easy to meet new players.",
+    title: "Adult Lunchtime Hockey",
+    description: "Every Monday & Friday thru 11/13/26, 11:45 AM – 1:15 PM",
     image: imgadultdropin,
-    alt: "Open Hockey",
+    alt: "Adult Lunchtime Hockey",
     pos: "50% 0%",
-    href: "https://www.wingsarena.com/open-hockey",
+    href: "https://www.wingsarena.com/adult-lunchtime-hockey",
   },
   {
     title: "Wings Arena Adult Hockey League",
@@ -68,9 +68,9 @@ const CARDS = [
 ];
 
 function getCardCtaText(title) {
-  if (title === "In-House Summer League") return "Info & Registration";
+  if (title === "Mites B & C Schedules") return "View Schedules";
   if (title === "Learn to Play") return "Info & Registration";
-  if (title === "Open Hockey") return "Info & RSVP";
+  if (title === "Adult Lunchtime Hockey") return "Info & RSVP";
   if (title === "Private Lessons") return "Learn More";
   if (title === "Stick & Puck") return "Learn More";
   if (title === "Wings Arena Adult Hockey League") return "Learn More";
@@ -79,9 +79,9 @@ function getCardCtaText(title) {
 
 function hasRaisedDivider(title) {
   return (
-    title === "In-House Summer League" ||
+    title === "Mites B & C Schedules" ||
     title === "Learn to Play" ||
-    title === "Open Hockey"
+    title === "Adult Lunchtime Hockey"
   );
 }
 
